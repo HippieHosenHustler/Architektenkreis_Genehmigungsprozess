@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OnlyOneResponsibility</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(
+				(
+								IF(
+												NOT(ISBLANK(Account__c)),1,0
+								) + IF(
+												NOT(ISBLANK(Plant__c)),1,0
+								) + IF(
+												NOT(TEXT(Product_Family__c)=NULL),1,0
+								) + IF(
+												NOT(TEXT(Delivery_Location__c)=NULL),1,0
+								)
+				) = 1
+)</errorConditionFormula>
+    <errorMessage>A commitee can only be responsible for exactly one of the following: Account, Delivery Location, Plant, Product Family</errorMessage>
+</ValidationRule>
