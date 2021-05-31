@@ -12,11 +12,19 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
+                <field>Opportunity__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>Commitee__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>User__c</field>
+                <field>Is_Locked__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Commitee_Decision__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns />

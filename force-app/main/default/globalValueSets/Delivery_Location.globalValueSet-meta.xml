@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Phone</fullName>
+        <default>false</default>
+        <label>Phone</label>
+    </customValue>
+    <customValue>
+        <fullName>E-Mail</fullName>
+        <default>false</default>
+        <label>E-Mail</label>
+    </customValue>
+    <customValue>
+        <fullName>Webshop</fullName>
+        <default>false</default>
+        <label>Webshop</label>
+    </customValue>
+    <customValue>
+        <fullName>Distributor</fullName>
+        <default>false</default>
+        <label>Distributor</label>
+    </customValue>
+    <masterLabel>Delivery Locations</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
