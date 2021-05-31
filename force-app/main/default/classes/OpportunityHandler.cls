@@ -4,7 +4,7 @@
 
 public without sharing class OpportunityHandler extends TriggerHandlerExtension {
   // Constructor
-  public msOpportunityHandler() {
+  public OpportunityHandler() {
     super();
   }
 
