@@ -14,6 +14,12 @@
     <layoutAssignments>
         <layout>Opportunity-Opportunity %28Support%29 Layout</layout>
     </layoutAssignments>
+    <layoutAssignments>
+        <layout>Commitee__c-Commitee Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Plant__c-Plant Layout</layout>
+    </layoutAssignments>
     <userLicense>Salesforce</userLicense>
     <userPermissions>
         <enabled>true</enabled>
