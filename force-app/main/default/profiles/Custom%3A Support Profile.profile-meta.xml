@@ -1,6 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <custom>true</custom>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Commitee_Assignment__c.User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Priority_Transition__c</field>
@@ -12,10 +17,13 @@
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
-        <layout>Opportunity-Opportunity %28Support%29 Layout</layout>
+        <layout>Commitee_Assignment__c-Commitee Assignment Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Commitee__c-Commitee Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Opportunity-Opportunity %28Support%29 Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Plant__c-Plant Layout</layout>

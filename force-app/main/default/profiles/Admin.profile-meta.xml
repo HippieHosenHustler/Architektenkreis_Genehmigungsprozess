@@ -3,6 +3,11 @@
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Commitee_Assignment__c.User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Opportunity.Priority_Transition__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -12,6 +17,9 @@
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>
+        <layout>Commitee_Assignment__c-Commitee Assignment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Commitee__c-Commitee Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -20,6 +28,15 @@
     <layoutAssignments>
         <layout>Plant__c-Plant Layout</layout>
     </layoutAssignments>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Commitee_Assignment__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
