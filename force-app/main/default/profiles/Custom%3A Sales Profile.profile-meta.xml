@@ -13,6 +13,7 @@
     </fieldPermissions>
     <layoutAssignments>
         <layout>Opportunity-Opportunity %28Sales%29 Layout</layout>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>Commitee__c-Commitee Layout</layout>
     </layoutAssignments>
