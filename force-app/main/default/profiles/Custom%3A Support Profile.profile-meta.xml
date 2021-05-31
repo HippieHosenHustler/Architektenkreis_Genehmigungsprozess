@@ -241,13 +241,6 @@
     <layoutAssignments>
         <layout>TriggerSetting__mdt-Trigger Setting Layout</layout>
     </layoutAssignments>
-    <layoutAssignments>
-        <layout
-    >TriggerFactorySetting__mdt-Trigger Factory Setting Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>TriggerSetting__mdt-Trigger Setting Layout</layout>
-    </layoutAssignments>
     <userLicense>Salesforce</userLicense>
     <userPermissions>
         <enabled>true</enabled>
