@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Normal</fullName>
+        <default>false</default>
+        <label>Normal</label>
+    </customValue>
+    <customValue>
+        <fullName>Low</fullName>
+        <default>false</default>
+        <label>Low</label>
+    </customValue>
+    <customValue>
+        <fullName>Important</fullName>
+        <default>false</default>
+        <label>Important</label>
+    </customValue>
+    <customValue>
+        <fullName>Very Important</fullName>
+        <default>false</default>
+        <label>Very Important</label>
+    </customValue>
+    <customValue>
+        <fullName>Do Not Pursue</fullName>
+        <default>false</default>
+        <label>Do Not Pursue</label>
+    </customValue>
+    <masterLabel>Approval Importance Options</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -8,6 +8,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Commitee_Opportunity_Junction__c.Commitee_Decision__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Commitee_Opportunity_Junction__c.Is_Locked__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Opportunity.Priority_Transition__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -18,6 +28,9 @@
     </fieldPermissions>
     <layoutAssignments>
         <layout>Commitee_Assignment__c-Commitee Assignment Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Commitee_Opportunity_Junction__c-Commitee Opportunity Junction Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Commitee__c-Commitee Layout</layout>
