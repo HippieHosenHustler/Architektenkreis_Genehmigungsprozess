@@ -4,5 +4,13 @@
         <members>Admin</members>
         <name>Profile</name>
     </types>
+    <types>
+        <members>OpportunityHandler</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>OpportunityTrigger</members>
+        <name>ApexTrigger</name>
+    </types>
     <version>51.0</version>
 </Package>
