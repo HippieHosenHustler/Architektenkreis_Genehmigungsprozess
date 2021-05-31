@@ -156,7 +156,7 @@
     <label>Commitee Assignment</label>
     <nameField>
         <label>Commitee Name</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Commitee Assignments</pluralLabel>
     <searchLayouts/>
