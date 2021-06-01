@@ -204,8 +204,7 @@
         <layout>Commitee_Assignment__c-Commitee Assignment Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout
-    >Commitee_Opportunity_Junction__c-Commitee Opportunity Junction Layout</layout>
+        <layout>Commitee_Opportunity_Junction__c-Commitee Opportunity Junction Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Commitee__c-Commitee Layout</layout>
@@ -220,15 +219,7 @@
         <layout>Plant__c-Plant Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout
-    >TriggerFactorySetting__mdt-Trigger Factory Setting Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>TriggerSetting__mdt-Trigger Setting Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout
-    >TriggerFactorySetting__mdt-Trigger Factory Setting Layout</layout>
+        <layout>TriggerFactorySetting__mdt-Trigger Factory Setting Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>TriggerSetting__mdt-Trigger Setting Layout</layout>
