@@ -22,7 +22,7 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
       opportunityNew.Priority_Transition__c == 'Important' ||
       opportunityNew.Priority_Transition__c == 'Very Important'
     ) {
-      opportunityNew.Is_Locked = true;
+      opportunityNew.Is_Locked__c = true;
     } else {
       opportunityNew.Priority__c = opportunityNew.Priority_Transition__c;
     }
