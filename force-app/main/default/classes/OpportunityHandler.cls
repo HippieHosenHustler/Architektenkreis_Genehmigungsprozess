@@ -36,9 +36,9 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
     Set<Id> plantIds = new Set<Id>();
 
     List<OpportunityLineItem> lineItems = [
-            SELECT Id, Plant__c, Product2.Family, Delivery_Location__c
-            FROM OpportunityLineItem
-            WHERE OpportunityId = :opportunity.Id
+      SELECT Id, Plant__c, Product2.Family, Delivery_Location__c
+      FROM OpportunityLineItem
+      WHERE OpportunityId = :opportunity.Id
     ];
 
     for (OpportunityLineItem oli : lineItems) {
@@ -48,22 +48,25 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
     }
 
     List<Commitee__c> commitees = [
-            SELECT Id
-            FROM Commitee__c
-            WHERE Account__c = :opportunity.AccountId
-            OR Delivery_Location__c IN :deliveryLocations
-            OR Plant__c IN :plantIds
-            OR Product_Family__c IN :productFamilies
+      SELECT Id
+      FROM Commitee__c
+      WHERE
+        Account__c = :opportunity.AccountId
+        OR Delivery_Location__c IN :deliveryLocations
+        OR Plant__c IN :plantIds
+        OR Product_Family__c IN :productFamilies
     ];
 
     List<Commitee_Opportunity_Junction__c> junctions = new List<Commitee_Opportunity_Junction__c>();
     for (Commitee__c commitee : commitees) {
-      junctions.add(new Commitee_Opportunity_Junction__c(
-              Opportunity__c = opportunity.Id,
-              Commitee__c = commitee.Id
-      ));
+      junctions.add(
+        new Commitee_Opportunity_Junction__c(
+          Opportunity__c = opportunity.Id,
+          Commitee__c = commitee.Id
+        )
+      );
     }
-    insert commitees;
+    insert junctions;
   }
 
   //public override void beforeDelete(SObject obj) { addToLoopCount();}
