@@ -4,20 +4,20 @@
 
 public without sharing class OpportunityHandler extends TriggerHandlerExtension {
 
-  List<Commitee__c> committees = new List<Commitee__c>();
+  Map<Id, Commitee__c> committees = new Map<Id, Commitee__c>();
   Map<Id, List<OpportunityLineItem>> lineItemsByOppIds = new Map<Id, List<OpportunityLineItem>>();
   List<Commitee_Opportunity_Junction__c> junctionsToInsert = new List<Commitee_Opportunity_Junction__c>();
 
   // Constructor
   public OpportunityHandler() {
     super();
-    committees = [
+    committees = new Map<Id, Commitee__c>([
             SELECT Id, Account__c, Plant__c, Delivery_Location__c, Product_Family__c, (
                     SELECT User__c
                     FROM Commitee_Assignments__r
             )
             FROM Commitee__c
-    ];
+    ]);
   }
 
   public override void bulkBefore() {
@@ -42,6 +42,8 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
 
   public override void bulkAfter() {
     insert junctionsToInsert;
+
+
   }
 
   //public override void beforeInsert(SObject obj) { addToLoopCount(); }
@@ -73,7 +75,7 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
       plantIds.add(oli.Plant__c);
     }
 
-    for (Commitee__c commitee : committees) {
+    for (Commitee__c commitee : committees.values()) {
       if (commitee.Account__c == opportunity.AccountId || deliveryLocations.contains(commitee.Delivery_Location__c) || productFamilies.contains(commitee.Product_Family__c) || plantIds.contains(commitee.Plant__c)) {
         junctionsToInsert.add(
                 new Commitee_Opportunity_Junction__c(
