@@ -13,7 +13,10 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
   public OpportunityHandler() {
     super();
     committees = [
-            SELECT Id, Account__c, Plant__c, Delivery_Location__c, Product_Family__c
+            SELECT Id, Account__c, Plant__c, Delivery_Location__c, Product_Family__c, (
+                    SELECT User__c
+                    FROM Commitee_Assignments__r
+            )
             FROM Commitee__c
     ];
   }
