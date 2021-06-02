@@ -25,7 +25,7 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
 
     for (OpportunityLineItem oli : lineItems) {
       if (!lineItemsByOppIds.containsKey(oli.OpportunityId)) {
-        lineItemsByOppIds.put(oli.OpportunityId, new List<OpportunityLineItem>);
+        lineItemsByOppIds.put(oli.OpportunityId, new List<OpportunityLineItem>());
       }
       lineItemsByOppIds.get(oli.OpportunityId).add(oli);
     }
