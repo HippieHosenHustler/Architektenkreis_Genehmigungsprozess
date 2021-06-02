@@ -8,6 +8,8 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
   Map<Id, List<OpportunityLineItem>> lineItemsByOppIds = new Map<Id, List<OpportunityLineItem>>();
   List<Commitee_Opportunity_Junction__c> junctionsToInsert = new List<Commitee_Opportunity_Junction__c>();
 
+  List<Approval.ProcessSubmitRequest> approvalRequestList = new List<Approval.ProcessSubmitRequest>();
+
   // Constructor
   public OpportunityHandler() {
     super();
@@ -43,7 +45,24 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
   public override void bulkAfter() {
     insert junctionsToInsert;
 
+    for (Commitee_Opportunity_Junction__c junction : junctionsToInsert) {
+      // Users that need to approve this
+      List<Id> userIds = new List<Id>();
+      Commitee__c commitee = committees.get(junction.Commitee__c);
+      for (Commitee_Assignment__c ass : commitee.Commitee_Assignments__r) {
+        userIds.add(ass.User__c);
+      }
 
+      for (Id userId : userIds) {
+        Approval.ProcessSubmitRequest approvalRequest = new Approval.ProcessSubmitRequest();
+        approvalRequest.setComments('Submitting request for approval.');
+        approvalRequest.setObjectId(junction.Id);
+        approvalRequest.setNextApproverIds(new List<Id>{userId});
+        approvalRequestList.add(approvalRequest);
+      }
+
+      Approval.process(approvalRequestList);
+    }
   }
 
   //public override void beforeInsert(SObject obj) { addToLoopCount(); }
