@@ -77,7 +77,8 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
         junctionsToInsert.add(
                 new Commitee_Opportunity_Junction__c(
                         Opportunity__c = opportunity.Id,
-                        Commitee__c = commitee.Id
+                        Commitee__c = commitee.Id,
+                        Approval_Round__c = 1
                 )
         );
       }
