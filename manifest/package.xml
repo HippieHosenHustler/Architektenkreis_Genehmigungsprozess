@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>Admin</members>
@@ -17,6 +17,34 @@
         <members>OpportunityTrigger</members>
         <members>CommiteeOpportunityJunctionTrigger</members>
         <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>Commitee_Opportunity_Junction__c.Approval_Round__c</members>
+        <members>Commitee_Opportunity_Junction__c.Has_Approved__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>TriggerFactorySetting.Commitee_Opportunity_Junction_c</members>
+        <name>CustomMetadata</name>
+    </types>
+    <types>
+        <members>Commitee_Assignment__c</members>
+        <members>Commitee_Opportunity_Junction__c</members>
+        <members>Commitee__c</members>
+        <members>Plant__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Commitee_Assignment__c.All</members>
+        <members>Commitee_Opportunity_Junction__c.All</members>
+        <members>Commitee__c.All</members>
+        <members>Plant__c.All</members>
+        <name>ListView</name>
+    </types>
+    <types>
+        <members>Commitee_Opportunity_Junction__c.Approve_Request</members>
+        <members>Commitee_Opportunity_Junction__c.LockRecord</members>
+        <name>WorkflowFieldUpdate</name>
     </types>
     <version>51.0</version>
 </Package>

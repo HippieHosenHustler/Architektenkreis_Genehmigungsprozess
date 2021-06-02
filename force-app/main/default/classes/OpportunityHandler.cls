@@ -3,12 +3,33 @@
  */
 
 public without sharing class OpportunityHandler extends TriggerHandlerExtension {
+
+  Map<Id, List<OpportunityLineItem>> lineItemsByOppIds = new Map<Id, List<OpportunityLineItem>>();
+
   // Constructor
   public OpportunityHandler() {
     super();
   }
 
-  //public override void bulkBefore() { }
+  public override void bulkBefore() {
+    Set<Id> oppIds = new Set<Id>();
+    for (Opportunity opp : (List<Opportunity>) Trigger.new) {
+      oppIds.add(opp.Id);
+    }
+
+    List<OpportunityLineItem> lineItems = [
+            SELECT Id, Plant__c, Product2.Family, Delivery_Location__c, OpportunityId
+            FROM OpportunityLineItem
+            WHERE OpportunityId IN :oppIds
+    ];
+
+    for (OpportunityLineItem oli : lineItems) {
+      if (!lineItemsByOppIds.containsKey(oli.OpportunityId)) {
+        lineItemsByOppIds.put(oli.OpportunityId, new List<OpportunityLineItem>);
+      }
+      lineItemsByOppIds.get(oli.OpportunityId).add(oli);
+    }
+  }
 
   //public override void bulkAfter() {}
 
@@ -35,13 +56,7 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
     Set<String> productFamilies = new Set<String>();
     Set<Id> plantIds = new Set<Id>();
 
-    List<OpportunityLineItem> lineItems = [
-      SELECT Id, Plant__c, Product2.Family, Delivery_Location__c
-      FROM OpportunityLineItem
-      WHERE OpportunityId = :opportunity.Id
-    ];
-
-    for (OpportunityLineItem oli : lineItems) {
+    for (OpportunityLineItem oli : lineItemsByOppIds.get(opportunity.Id)) {
       deliveryLocations.add(oli.Delivery_Location__c);
       productFamilies.add(oli.Product2.Family);
       plantIds.add(oli.Plant__c);
