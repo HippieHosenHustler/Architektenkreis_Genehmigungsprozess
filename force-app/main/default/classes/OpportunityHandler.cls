@@ -4,6 +4,7 @@
 
 public without sharing class OpportunityHandler extends TriggerHandlerExtension {
 
+  List<Commitee__c> committees = new List<Commitee__c>();
   Map<Id, List<OpportunityLineItem>> lineItemsByOppIds = new Map<Id, List<OpportunityLineItem>>();
   List<Commitee_Opportunity_Junction__c> junctionsToInsert = new List<Commitee_Opportunity_Junction__c>();
   List<Commitee_Opportunity_Junction__c> junctionsToUpdate = new List<Commitee_Opportunity_Junction__c>();
@@ -11,6 +12,10 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
   // Constructor
   public OpportunityHandler() {
     super();
+    committees = [
+            SELECT Id, Account__c, Plant__c, Delivery_Location__c, Product_Family__c
+            FROM Commitee__c
+    ];
   }
 
   public override void bulkBefore() {
@@ -45,9 +50,9 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
     Opportunity opportunityNew = (Opportunity) obj;
 
     if (
-      opportunityNew.Priority_Transition__c == 'Important' ||
-      opportunityNew.Priority_Transition__c == 'Very Important'
-    ) {
+            opportunityNew.Priority_Transition__c == 'Important' ||
+                    opportunityNew.Priority_Transition__c == 'Very Important'
+            ) {
       lockAndStartApproval(opportunityNew);
     } else {
       opportunityNew.Priority__c = opportunityNew.Priority_Transition__c;
@@ -67,23 +72,16 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
       plantIds.add(oli.Plant__c);
     }
 
-    List<Commitee__c> commitees = [
-      SELECT Id
-      FROM Commitee__c
-      WHERE
-        Account__c = :opportunity.AccountId
-        OR Delivery_Location__c IN :deliveryLocations
-        OR Plant__c IN :plantIds
-        OR Product_Family__c IN :productFamilies
-    ];
+    for (Commitee__c commitee : committees) {
+      if (commitee.Account__c == opportunity.AccountId || deliveryLocations.contains(commitee.Delivery_Location__c) || productFamilies.contains(commitee.Product_Family__c) || plantIds.contains(commitee.Plant__c)) {
+        junctionsToInsert.add(
+                new Commitee_Opportunity_Junction__c(
+                        Opportunity__c = opportunity.Id,
+                        Commitee__c = commitee.Id
+                )
+        );
+      }
 
-    for (Commitee__c commitee : commitees) {
-      junctionsToInsert.add(
-        new Commitee_Opportunity_Junction__c(
-          Opportunity__c = opportunity.Id,
-          Commitee__c = commitee.Id
-        )
-      );
     }
   }
 
