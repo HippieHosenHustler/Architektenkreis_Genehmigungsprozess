@@ -7,7 +7,6 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
   List<Commitee__c> committees = new List<Commitee__c>();
   Map<Id, List<OpportunityLineItem>> lineItemsByOppIds = new Map<Id, List<OpportunityLineItem>>();
   List<Commitee_Opportunity_Junction__c> junctionsToInsert = new List<Commitee_Opportunity_Junction__c>();
-  List<Commitee_Opportunity_Junction__c> junctionsToUpdate = new List<Commitee_Opportunity_Junction__c>();
 
   // Constructor
   public OpportunityHandler() {
@@ -43,7 +42,6 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
 
   public override void bulkAfter() {
     insert junctionsToInsert;
-    update junctionsToUpdate;
   }
 
   //public override void beforeInsert(SObject obj) { addToLoopCount(); }
