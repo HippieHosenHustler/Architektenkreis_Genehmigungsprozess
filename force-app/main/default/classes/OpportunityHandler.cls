@@ -5,6 +5,8 @@
 public without sharing class OpportunityHandler extends TriggerHandlerExtension {
 
   Map<Id, List<OpportunityLineItem>> lineItemsByOppIds = new Map<Id, List<OpportunityLineItem>>();
+  List<Commitee_Opportunity_Junction__c> junctionsToInsert = new List<Commitee_Opportunity_Junction__c>();
+  List<Commitee_Opportunity_Junction__c> junctionsToUpdate = new List<Commitee_Opportunity_Junction__c>();
 
   // Constructor
   public OpportunityHandler() {
@@ -31,7 +33,10 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
     }
   }
 
-  //public override void bulkAfter() {}
+  public override void bulkAfter() {
+    insert junctionsToInsert;
+    update junctionsToUpdate;
+  }
 
   //public override void beforeInsert(SObject obj) { addToLoopCount(); }
 
@@ -72,16 +77,14 @@ public without sharing class OpportunityHandler extends TriggerHandlerExtension 
         OR Product_Family__c IN :productFamilies
     ];
 
-    List<Commitee_Opportunity_Junction__c> junctions = new List<Commitee_Opportunity_Junction__c>();
     for (Commitee__c commitee : commitees) {
-      junctions.add(
+      junctionsToInsert.add(
         new Commitee_Opportunity_Junction__c(
           Opportunity__c = opportunity.Id,
           Commitee__c = commitee.Id
         )
       );
     }
-    insert junctions;
   }
 
   //public override void beforeDelete(SObject obj) { addToLoopCount();}
